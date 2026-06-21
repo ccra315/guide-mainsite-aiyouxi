@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 信息索引与资料整理平台</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f4f9fc;
+            color: #1f2e3a;
+            line-height: 1.6;
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        /* 卡片网格基础 */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 1.25rem;
+            padding: 1.75rem 1.5rem;
+            box-shadow: 0 6px 18px rgba(0, 90, 100, 0.06);
+            border-left: 4px solid #2b9e9b;
+            transition: box-shadow 0.2s, transform 0.15s;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 24px rgba(0, 110, 115, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .card-accent {
+            border-left-color: #4bb5b2;
+            background: #f4fcfb;
+        }
+
+        .card-soft {
+            border-left-color: #7fcbc9;
+            background: #fafffe;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #135e5c;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .subhead {
+            font-size: 1.1rem;
+            color: #3b6d6b;
+            margin-bottom: 1.2rem;
+            border-bottom: 1px dashed #b8dad8;
+            padding-bottom: 0.85rem;
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #166b68;
+            margin-bottom: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        h2::before {
+            content: "▹";
+            color: #2b9e9b;
+            font-size: 1.2rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: #2d414a;
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        .pill {
+            display: inline-block;
+            background: #e3f3f2;
+            color: #116b68;
+            padding: 0.2rem 0.9rem;
+            border-radius: 1.5rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            margin-right: 0.4rem;
+        }
+
+        .tag-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 0.3rem;
+            margin: 1rem 0 0.4rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid #dceeec;
+        }
+
+        .faq-item:last-child {
+            border-bottom: 0;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .faq-q {
+            font-weight: 500;
+            color: #0b5c59;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-a {
+            color: #38636e;
+            font-size: 0.95rem;
+        }
+
+        .banner-note {
+            background: #d9f0ee;
+            border-radius: 1rem;
+            padding: 1rem 1.4rem;
+            margin-top: 2rem;
+            font-size: 0.95rem;
+            border: 1px solid #b4dbd8;
+            color: #20534f;
+        }
+
+        .banner-note a {
+            color: #0b6e6a;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted #47918d;
+        }
+
+        .banner-note a:hover {
+            border-bottom: 1px solid #0b6e6a;
+        }
+
+        .footer-note {
+            margin-top: 3rem;
+            text-align: center;
+            color: #5b8481;
+            font-size: 0.85rem;
+            border-top: 1px solid #c7dfdc;
+            padding-top: 1.8rem;
+        }
+
+        .footer-note a {
+            color: #1e7a76;
+            text-decoration: none;
+            border-bottom: 1px dotted #47918d;
+        }
+
+        .footer-note a:hover {
+            border-bottom: 1px solid;
+        }
+
+        /* 响应式调整 */
+        @media (min-width: 560px) {
+            body {
+                padding: 3rem 2rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            h1 {
+                font-size: 2.6rem;
+            }
+
+            .subhead {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (min-width: 860px) {
+            .grid-3 {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .card {
+                padding: 1.25rem 1rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .banner-note {
+                padding: 0.8rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>爱游戏 · 资料整理与索引</h1>
+        <p class="subhead">从信息汇览到内容溯源，围绕游戏的系统化梳理</p>
+    </header>
+
+    <!-- 摘要卡片 -->
+    <div class="card" style="border-left-color: #2b9e9b; margin-bottom: 0.5rem;">
+        <p style="font-size: 1.05rem;"><span class="pill">摘要</span> 爱游戏是一个以游戏内容为线索的信息索引平台，聚焦于产品资料、版本记录、背景考据与媒体档案的整理。不以评测或导购为重心，而是尝试提供更结构化的参照体系。如果你时常需要回溯某款作品的开发脉络、版本变迁或周边资料，或许可以在这里找到相对清晰的路径。</p>
+    </div>
+
+    <!-- 亮点 + 使用建议 用网格展示 -->
+    <div class="grid">
+        <div class="card card-accent">
+            <h2>信息亮点</h2>
+            <ul style="list-style: none; padding-left: 0;">
+                <li style="margin-bottom: 0.7rem; position: relative; padding-left: 1.4rem;">• 按作品、系列、厂商等维度归纳条目，降低反复搜索的精力消耗</li>
+                <li style="margin-bottom: 0.7rem; position: relative; padding-left: 1.4rem;">• 收录公开的开发文档、访谈摘录、版本更新日志等来源，并标注出处</li>
+                <li style="margin-bottom: 0.7rem; position: relative; padding-left: 1.4rem;">• 索引内容偏重事实类描述，避免主观渲染，方便自行判断</li>
+                <li style="margin-bottom: 0; position: relative; padding-left: 1.4rem;">• 定期梳理社群讨论中出现的考证与勘误，补全旧条目</li>
+            </ul>
+        </div>
+        <div class="card card-soft">
+            <h2>使用建议</h2>
+            <p>可以直接在站内搜索作品或系列名称，浏览对应索引卡片。部分条目附带外部参考链接，建议交叉核对原始资料。如果你想了解某款游戏的版本差异或设定沿革，不妨从“开发历程”或“版本记录”分类切入。</p>
+            <p class="tag-group" style="margin-top: 0.8rem;">
+                <span class="pill">🔍 关键词检索</span>
+                <span class="pill">📂 分类浏览</span>
+                <span class="pill">📎 外部来源</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- 场景 / 适用方向 (卡片式) -->
+    <div style="margin: 1rem 0 1.8rem;">
+        <div class="card" style="border-left-color: #56b3b0;">
+            <h2>这样的索引适合谁</h2>
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem 2rem;">
+                <div style="flex: 1 1 180px;">
+                    <p style="font-weight: 500; margin-bottom: 0.2rem;">· 资料考据向</p>
+                    <p style="font-size: 0.95rem;">需要追溯游戏版本、补丁内容或媒体评测时间线的爱好者</p>
+                </div>
+                <div style="flex: 1 1 180px;">
+                    <p style="font-weight: 500; margin-bottom: 0.2rem;">· 内容归档</p>
+                    <p style="font-size: 0.95rem;">整理个人游戏库、记录游玩历程或撰写回顾文章时用于参照</p>
+                </div>
+                <div style="flex: 1 1 180px;">
+                    <p style="font-weight: 500; margin-bottom: 0.2rem;">· 轻量查阅</p>
+                    <p style="font-size: 0.95rem;">不想陷入长篇评测，只想快速确认某款游戏的基础信息与版本沿革</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="card" style="border-left-color: #3aa39f; background: #f6fdfc;">
+        <h2>常见问题摘要</h2>
+        <div class="faq-item">
+            <div class="faq-q">索引覆盖哪些游戏？</div>
+            <div class="faq-a">以商业作品为主，包含部分有公开资料的独立游戏和实验性项目。不保证覆盖所有作品，但会持续补充条目。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">信息的更新频率如何？</div>
+            <div class="faq-a">目前不定期更新，主要跟随新版本发布、社区考证或公开资料释出节奏。重大版本更新后一般会在一周内整理。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">我可以贡献资料或提出勘误吗？</div>
+            <div class="faq-a">站内部分条目留有反馈渠道。如果你有更准确的来源或发现错误，欢迎通过对应页面提示提交。</div>
+        </div>
+        <div class="faq-item" style="margin-bottom: 0; padding-bottom: 0; border-bottom: none;">
+            <div class="faq-q">是否包含修改、模组或非官方内容？</div>
+            <div class="faq-a">仅收录官方发布或经明确授权公开的内容。非官方模组、自制地图等暂不列入主索引。</div>
+        </div>
+    </div>
+
+    <!-- 可信但克制的访问说明 -->
+    <div class="banner-note">
+        <p style="margin-bottom: 0.4rem;"><strong>关于资料索引的立场</strong></p>
+        <p>爱游戏只是一个信息整理工具，不提供下载、激活、修改或商业导购服务。所有条目均基于可查证的公开资料，不渲染情绪、不承诺时效。如果你希望进一步了解某个条目，建议直接参考原始来源。你可以在 <a href="https://mainsite-aiyouxi.com.cn">爱游戏</a> 中浏览当前已整理的分类索引，或使用站内搜索定位具体内容。</p>
+    </div>
+
+    <!-- 底部 + 链接 -->
+    <div class="footer-note">
+        <p>信息索引 · 非官方资料站 · 内容仅供参考</p>
+        <p style="margin-top: 0.3rem;">更多条目持续整理中 · <a href="https://mainsite-aiyouxi.com.cn">爱游戏</a></p>
+    </div>
+</div>
+</body>
+</html>
